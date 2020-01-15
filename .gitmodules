@@ -1,0 +1,3 @@
+[submodule "efcore"]
+	path = efcore
+	url = https://github.com/dotnet/efcore.git

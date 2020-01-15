@@ -1,5 +1,7 @@
 # EfCoreCompileBench
 
+Run by checking out a version of this and executing `dotnet run --project Benchmark\Benchmark.csproj` from the command line (and try to close as many possibly interfering programs as possible beforehand).
+
 Results for really simple empty project: https://github.com/progressonderwijs/EfCoreCompileBench/commit/a4ec6c9fd3320131cb97a8279bd38992d3b89c96
 ```
 Release310Rebuild: 0.7990629899999999 +/- 0.009089836825097489 seconds (including best time 0.7840217; excluding outliers 0.8307335; 0.8280571)

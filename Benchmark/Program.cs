@@ -37,25 +37,25 @@ namespace Benchmark
         static class PredefinedBuilds
         {
             public static readonly BuildSettings[] Builds = {
-                new BuildSettings("Release310Rebuild") { Executable = "dotnet", Arguments = "msbuild Project310/Project310.csproj -target:restore;rebuild -verbosity:minimal -p:configuration=Release" },
                 new BuildSettings("Release311Rebuild") { Executable = "dotnet", Arguments = "msbuild Project311/Project311.csproj -target:restore;rebuild -verbosity:minimal -p:configuration=Release" },
+                new BuildSettings("Release310Rebuild") { Executable = "dotnet", Arguments = "msbuild Project310/Project310.csproj -target:restore;rebuild -verbosity:minimal -p:configuration=Release" },
 
-                new BuildSettings("Debug310Rebuild") { Executable = "dotnet", Arguments = "msbuild Project310/Project310.csproj -target:restore;rebuild -verbosity:minimal -p:configuration=Debug" },
                 new BuildSettings("Debug311Rebuild") { Executable = "dotnet", Arguments = "msbuild Project311/Project311.csproj -target:restore;rebuild -verbosity:minimal -p:configuration=Debug" },
+                new BuildSettings("Debug310Rebuild") { Executable = "dotnet", Arguments = "msbuild Project310/Project310.csproj -target:restore;rebuild -verbosity:minimal -p:configuration=Debug" },
 
-                new BuildSettings("Debug310NoOpBuild") { Executable = "dotnet", Arguments = "msbuild Project310/Project310.csproj -target:restore;build -verbosity:minimal -p:configuration=Debug" },
                 new BuildSettings("Debug311NoOpBuild") { Executable = "dotnet", Arguments = "msbuild Project311/Project311.csproj -target:restore;build -verbosity:minimal -p:configuration=Debug" },
+                new BuildSettings("Debug310NoOpBuild") { Executable = "dotnet", Arguments = "msbuild Project310/Project310.csproj -target:restore;build -verbosity:minimal -p:configuration=Debug" },
 
+                new BuildSettings("Debug311BuildWithTouchedFile") {
+                    Prebuild = FileToucher("Project311/Program.cs"),
+                    Executable = "dotnet",
+                    Arguments = "msbuild Project311/Project311.csproj -target:restore;build -verbosity:minimal -p:configuration=Debug"
+                },
                 new BuildSettings("Debug310BuildWithTouchedFile") {
                     Prebuild = FileToucher("Project310/Program.cs"),
                     Executable = "dotnet",
                     Arguments = "msbuild Project310/Project310.csproj -target:restore;build -verbosity:minimal -p:configuration=Debug"
                 },
-                new BuildSettings("Debug311BuildWithTouchedFile") {
-                    Prebuild = FileToucher("Project311/Program.cs"),
-                    Executable = "dotnet",
-                    Arguments = "msbuild Project311/Project311.csproj -target:restore;build -verbosity:minimal -p:configuration=Debug"
-                }
             };
 
             static Action FileToucher(string solutionRelativeFilePath)

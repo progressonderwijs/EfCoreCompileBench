@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <PackageReference Include="IncrementalMeanVarianceAccumulator" Version="1.0.0" />
-    <PackageReference Include="ProgressOnderwijsUtils" Version="54.0.2" />
   </ItemGroup>
 
 </Project>

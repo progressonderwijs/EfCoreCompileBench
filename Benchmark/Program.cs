@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using IncrementalMeanVarianceAccumulator;
-using ProgressOnderwijsUtils;
 
 namespace Benchmark
 {
@@ -33,7 +32,7 @@ namespace Benchmark
         static readonly Uri solutionpath = GetMyPath();
 
         static Uri GetMyPath([CallerFilePath] string path = null)
-            => new Uri(path).Combine(@"..\");
+            => new Uri(new Uri(path), @"..\");
 
         static class PredefinedBuilds
         {
@@ -60,7 +59,7 @@ namespace Benchmark
             };
 
             static Action FileToucher(string solutionRelativeFilePath)
-                => () => File.SetLastWriteTimeUtc(solutionpath.Combine(solutionRelativeFilePath).LocalPath, DateTime.UtcNow);
+                => () => File.SetLastWriteTimeUtc(new Uri(solutionpath, solutionRelativeFilePath).LocalPath, DateTime.UtcNow);
         }
 
         class BuildSettings
